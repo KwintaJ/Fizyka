@@ -1,8 +1,5 @@
-Fizyka
-======
-
-w LaTeX-u
----------
+Fizyka w LaTeX-u
+================
 
 Jan Kwinta
 ----------
