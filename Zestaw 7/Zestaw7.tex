@@ -1,0 +1,312 @@
+\documentclass[14pt, table]{extarticle}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={7in, 10.5in}]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tgbonum}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage[T1]{fontenc}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{arrows}
+
+\newcommand{\gram}{\textrm{g}}
+\newcommand{\farrad}{\textrm{F}}
+\newcommand{\wolt}{\textrm{V}}
+\newcommand{\kulomb}{\textrm{C}}
+\newcommand{\ohm}{\Omega}
+
+\title{Fizyka \\ \Large{Zestaw 7}}
+\author{Jan Kwinta}
+\date{2022-12-20}
+
+\begin{document}
+\maketitle
+
+\paragraph{Zadanie 1.}
+Okrag o promieniu $R$ jest naładowany ze stałą gęstością liniową $\lambda > 0$. W środku okregu umieszczono ładunek $q < 0$, który może sie swobodnie poruszać. Czy środek okregu jest dla tego ładunku położeniem równowagi trwałej? \\ \\
+Obliczmy natężenie $\vec{E}$ w środku okręgu całkując po kącie $\alpha$.
+$$ dE_x = d\vec{E} \sin{\alpha} $$
+$$ dE_y = d\vec{E} \cos{\alpha} $$
+$$ dE_x = k \frac{\lambda R}{R^2} \sin{\alpha} d\alpha $$
+$$ E_x = \int_0^{2\pi} dE_x = -k \frac{\lambda}{R} \cos{\alpha} \bigg|_{0}^{2\pi} = 0 $$
+Analogicznie dla $E_y$. \\
+Otrzymujemy natężenie w środku okręgu równy zero, z czego wynika, że siła wypadkowa działająca na ładunek $q$ jest równa $\vec{F} = \vec{E} \cdot q = 0$, więc dla ładunku $q$ jest on położeniem równowagi.
+
+
+\newpage
+\paragraph{Zadanie 2.}
+Przez miedziany przewodnik o przekroju $S = 1$ mm$^2$ płynie prąd o natężeniu $I = 1$A. Wyznaczyć (średnią) prędkość unoszenia elektronów w przewodniku, przyjmując, że na każdy atom miedzi przypada jeden elektron przewodnictwa. Masa atomowa miedzi wynosi $63.5 \frac{\gram}{\textrm{mol}}$, zaś jej gęstość jest równa $8.96 \frac{\gram}{\textrm{cm}^3}$. Liczba Avogadro wynosi $N_A = 6.02 \cdot 10^{23}.$ \\
+
+$$ n = \frac{8.96 \cdot \frac{10^3}{10^{-6}}}{63.5 \cdot 10^3} \cdot 6.02 \cdot 10^{23} = 0.849 \cdot 10^{29} = 8.49 \cdot 10^{28} $$ \\
+$$ v_d = \frac{I}{nSe} = \frac{1}{8.49 \cdot 10^{28}  \cdot 10^{-6} \cdot (-1.6) \cdot 10^{-19}} \approx 7.36 \cdot 10^{-5} \frac{\textrm{m}}{\textrm{s}} $$ \\
+
+
+\newpage
+\paragraph{Zadanie 3.}
+Dane są cztery oporniki o oporach $R_1 = 4\ohm$, $R_2 = 3\ohm$, $R_3 = 12\ohm$ i $R_4 = 6\ohm$ oraz ogniwo o sile elektromotorycznej $\epsilon = 10 \wolt$ i oporze wewnetrznym $r = 1\ohm$ połączone jak na rysunku. Policzyć prądy $I, I_1, I_2, I_3$ i $I_4$ oraz opór zastępczy układu oporników.
+
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (3, 0)
+	  to [R=$R_1$] (3, -3)
+	  to [R=$R_2$] (3, -6);
+
+\draw (3, -3)
+	  to (5, -3)
+	  to [R=$R_3$] (8, -3)
+	  to (10, -3);
+
+\draw (0, 0)
+	  to (10, 0)
+	  to (10, -6)
+	  to (8, -6)
+	  to [R=$R_4$] (5, -6)
+	  to (0, -6)
+	  to [battery1] (0, 0);
+
+\draw
+	  (0, -3) node [anchor=north east] {$\epsilon, r$}
+	  (0, -3) node [anchor=north west] {$+$}
+	  (0, -3) node [anchor=south west] {$-$}
+	  (1.5, -6) node [anchor=north] {$I$}
+	  (3, -0.5) node [anchor=east] {$I_1$}
+	  (3, -3.5) node [anchor=east] {$I_2$}
+	  (8.5, -3) node [anchor=south] {$I_3$}
+	  (8.5, -6) node [anchor=north] {$I_4$};
+
+\draw[very thin, -{Latex[scale=2.5]}] (1.6, -6) -- (1.75, -6);
+\draw[very thin, -{Latex[scale=2.5]}] (8.6, -6) -- (8.75, -6);
+\draw[very thin, -{Latex[scale=2.5]}] (8.6, -3) -- (8.75, -3);
+\draw[very thin, -{Latex[scale=2.5]}] (3, -0.4) -- (3, -0.3);
+\draw[very thin, -{Latex[scale=2.5]}] (3, -3.4) -- (3, -3.3);
+
+\end{circuitikz}
+\end{center}
+
+\newpage
+\paragraph{Zadanie 6.}
+Wyznaczyć opór zastępczy trzech oporników widocznych na rysunku, przyjmując, że opory przewodników, niezależnie od ich długości sa zaiedbywalnie małe.
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (0, 0)
+	  to (1, 0)
+	  to [R=$R_1$] (3, 0)
+	  to [R=$R_2$] (5, 0)
+	  to [R=$R_3$] (7, 0)
+	  to (8, 0);
+
+\draw (1, 0)
+	  to (1, -1.5)
+	  to (5, -1.5)
+	  to (5, 0);
+
+\draw (3, 0)
+	  to (3, 1.5)
+	  to (7, 1.5)
+	  to (7, 0);
+
+\draw
+	  (0, 0) node [anchor=east] {$A$} 
+	  (8, 0) node [anchor=west] {$B$}; 
+
+\end{circuitikz}
+\end{center}
+
+Należy zauważyć, że układ można narysować na inne sposoby:
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (0, 0)
+	  to (1, 0)
+	  to [R=$R_1$] (3, 0)
+	  to (5, 0)
+	  to (7, 0)
+	  to (8, 0);
+
+\draw (1, 0)
+	  to (1, -1.5)
+	  to (3, -1.5)
+	  to [R=$R_2$] (5, -1.5)
+	  to (5, 0);
+
+\draw (3, -1.5)
+	  to (3, -3)
+	  to (7, -3)
+	  to [R=$R_3$] (7, 0);
+
+\draw
+	  (0, 0) node [anchor=east] {$A$} 
+	  (8, 0) node [anchor=west] {$B$}; 
+
+\end{circuitikz}
+\end{center}
+
+I następnie:
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (0, 0) to [R=$R_2$] (8, 0);
+
+\draw (1, 0)
+	  to (1, 1.25)
+	  to [R=$R_1$] (4, 1.25)
+	  to (7, 1.25)
+	  to (7, 0);
+
+\draw (1, 0)
+	  to (1, -1.25)
+	  to (4, -1.25)
+	  to [R=$R_3$] (7, -1.25)
+	  to (7, 0);
+
+\draw
+	  (0, 0) node [anchor=east] {$A$} 
+	  (8, 0) node [anchor=west] {$B$}; 
+
+\end{circuitikz}
+\end{center}
+
+A to jest po prostu łączenie równoległe oporników, więc:
+$$ \frac{1}{R_Z} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} $$
+
+\newpage
+\paragraph{Zadanie 7.}
+Wyznaczyć zastepczą siłę elektromotoryczną $\epsilon_z$ i opór wewnętrzny $r_z$ baterii identycznych ogniw połaczonych (a) równolegle i (b) szeregowo. Warunkiem równoważności
+z pojedynczym ogniwem jest to, by przy podłaczeniu zewnętrznego oporu $R$ prąd płynacy przez ten opór miał to samo natężenie. \\
+
+(a)
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (0, 0) to (4, 0);
+
+\draw [thick, loosely dotted] (4.07, 0) -- (5, 0);
+
+\draw (0, -2) to (4, -2);
+
+\draw [thick, loosely dotted] (4.07, -2) -- (5, -2);
+
+\draw (5, 0) to (9, 0);
+
+\draw (5, -2) to (9, -2);
+
+\draw (0, -2) to [battery1] (0, 0);
+\draw (3, -2) to [battery1] (3, 0);
+\draw (6, -2) to [battery1] (6, 0);
+\draw (9, -2) to [R=$R$] (9, 0);
+
+\draw
+	  (0, -1) node [anchor=north east] {$\epsilon, r$}
+	  (3, -1) node [anchor=north east] {$\epsilon, r$}
+	  (6, -1) node [anchor=north east] {$\epsilon, r$};
+
+
+\end{circuitikz}
+\end{center}
+
+(b)
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (0, -2) to (0, 0) to [battery1] (2, 0) to [battery1] (4, 0);
+
+\draw [thick, loosely dotted] (4.07, 0) -- (5, 0);
+
+\draw (0, -2) to (4, -2);
+
+\draw [thick, loosely dotted] (4.07, -2) -- (5, -2);
+
+\draw (5, 0) to [battery1] (8, 0);
+
+\draw (5, -2) to (8, -2) to (8, -2) to [R=$R$] (8, 0);
+
+\draw
+	  (1, 0) node [anchor=south east] {$\epsilon, r$}
+	  (3, 0) node [anchor=south east] {$\epsilon, r$}
+	  (6.5, 0) node [anchor=south east] {$\epsilon, r$};
+
+
+\end{circuitikz}
+\end{center}
+
+\newpage
+\paragraph{Zadanie 8.}
+Wyznaczyć zastepczą siłę elektromotoryczną $\epsilon$ i opór wewnetrzny $r$ baterii ogniw
+pokazanej na rysunku. $\epsilon_1 = 10 \wolt$, $r_1 = 1 \ohm$, $\epsilon_2 = 20 \wolt$, $r_2 = 2 \ohm$, $\epsilon_3 = 30 \wolt$, $r_3 = 3 \ohm$.
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (-1, 0)
+	to [short,o-] (1, 0)
+	to (1, 1.5);
+
+\draw (3, 0)
+	to (3, 1.5)
+	to [battery1] (1, 1.5);
+
+\draw (1, 0)
+	to (1, -1.5)
+	to [battery1] (3, -1.5)
+	to (3, 0)
+	to [battery1] (5, 0);
+
+\draw (5.5, 0) to [short,o-] (5, 0);
+
+\draw
+	  (2, 1.5) node [anchor=south east] {$\epsilon_1, r_1$}
+	  (2, 1.5) node [anchor=north east] {$-$}
+	  (2, 1.5) node [anchor=north west] {$+$}
+	  (2, -1.5) node [anchor=north west] {$\epsilon_2, r_2$}
+	  (2, -1.5) node [anchor=south east] {$+$}
+	  (2, -1.5) node [anchor=south west] {$-$}
+	  (4, 0) node [anchor=south west] {$\epsilon_3, r_3$}
+	  (4, 0) node [anchor=north west] {$-$}
+	  (4, 0) node [anchor=north east] {$+$};
+	
+
+\end{circuitikz}
+\end{center}
+
+
+
+\newpage
+\paragraph{Zadanie 9.}
+W chwili $t = 0$ zamykamy kluczem $K$ obwód (tzw. obwód $RC$) i łączymy ze sobą nienaładowany kondensator o pojemności $C$, opornik $R$ oraz ogniwo o sile
+elektromotorycznej $\epsilon$ i zaniedbywalnym oporze wewnetrznym. Jak zależy od czasu nateżenie prądu płynącego w obwodzie oraz ładunek na okładce kondensatora? 
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (0, 0)
+	  to [normal open switch] (3, 0)
+	  to [R=$R$] (5, 0)
+	  to [C=$C$] (7, 0)
+	  to (7, -1.5)
+	  to (4, -1.5);
+
+\draw (0, 0)
+	  to (0, -1.5)
+	  to [battery1] (4, -1.5);
+
+\draw
+	  (1.5, 0) node [anchor=south east] {$K$}
+	  (2, -1.5) node [anchor=north east] {$\epsilon$}
+	  (2, -1.5) node [anchor=south east] {$+$}
+	  (2, -1.5) node [anchor=south west] {$-$};
+
+\end{circuitikz}
+\end{center}
+
+
+\end{document}
