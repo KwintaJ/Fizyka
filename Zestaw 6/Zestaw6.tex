@@ -1,0 +1,149 @@
+\documentclass[14pt, table]{extarticle}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={7in, 10.5in}]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tgbonum}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage[T1]{fontenc}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{arrows}
+
+\newcommand{\farrad}{\textrm{F}}
+\newcommand{\wolt}{\textrm{V}}
+\newcommand{\kulomb}{\textrm{C}}
+
+\title{Fizyka \\ \Large{Zestaw 6}}
+\author{Jan Kwinta}
+\date{2022-12-20}
+
+\begin{document}
+\maketitle
+
+\paragraph{Zadanie 2.}
+Obliczyć potencjał $V(x, y, z)$ jednorodnie naładowanego (ze stałą gęstością powierzchniową ładunku $\sigma$) cienkiego dysku o środku w poczatku układu i promieniu $R$ leżącego w płaszczyźnie $xy$. \\ \\
+(a) znaleźć ogólne wyrażenie (przy pomocy całki) na potencjał w dowolnym punkcie
+$P(x, y, z)$ \\ \\
+$$ V_{P}(x, y, z) = k \int \frac{\sigma d S}{\left| \vec{OP} - \vec{\xi} \  \right|} $$
+$$ V_{P}(x, y, z) = k \int_0^R \frac{\sigma 2 \pi r \ d r}{\sqrt{\left(x - \xi_1 \right)^2 + \left(y - \xi_2 \right)^2 + \left(z - \xi_3 \right)^2 }} $$
+$$ V_{P}(x, y, z) = 2k \pi \sigma \int_0^R \frac{r \ d r}{\sqrt{\left(x - \xi_1 \right)^2 + \left(y - \xi_2 \right)^2 + \left(z - \xi_3 \right)^2 }} $$ \\ \\
+Dla dowolnego punktu $P(0, 0, z)$ całka z powyższego podpunktu ma postać:
+$$ V_{P}(0, 0, z) = k \int_0^R \frac{\sigma 2 \pi r}{\sqrt{z^2 + r^2}} \ d r$$
+$$ V_{P}(0, 0, z) = 2 k \pi \sigma \int_0^R \frac{r}{\sqrt{z^2 + r^2}} \ d r = 2 k \pi \sigma \left( \sqrt{R^2 + z^2} - \sqrt{z^2} \right)$$
+\\ \\
+
+\newpage
+\paragraph{Zadanie 5.}
+Policzyć energię elektrostatyczną układu trzech ładunków punktowych $Q_1 = 1e$,
+$Q_2 = 4e$, i $Q_3 = 2e$, umieszczonych odpowiednio w punktach $P_1 = (0, 0, 0)$, $P_2 =
+(0, 4, 0) 10^{-10}$m i $P_3 = (3, 0, 0) 10^{-10}$m.
+\\ \\
+$$ E_{123} = \frac{k}{2} \left[ Q_1\left( \frac{kQ_2}{r_{12}} + \frac{kQ_3}{r_{13}} \right) + Q_2\left( \frac{kQ_1}{r_{12}} + \frac{kQ_3}{r_{23}} \right) + Q_3\left( \frac{kQ_1}{r_{13}} + \frac{kQ_2}{r{23}} \right) \right] $$
+\\ \\
+Obliczmy:
+$$ r_{12} = \left| \vec{r_1} - \vec{r_2} \right| = \sqrt{\left( 0 - 0 \right)^2 + \left( 0 - 4 \cdot 10^{-10} \right)^2 + \left( 0 - 0 \right)^2} = 4 \cdot 10^{-10} \textrm{m} $$ \\
+$$ r_{13} = \left| \vec{r_1} - \vec{r_3} \right| = \sqrt{\left( 0 - 3 \cdot 10^{-10} \right)^2 + \left( 0 - 0 \right)^2 + \left( 0 - 0 \right)^2} = 3 \cdot 10^{-10} \textrm{m} $$ \\
+$$ r_{23} = \left| \vec{r_2} - \vec{r_3} \right| = \sqrt{\left( 0 - 3 \cdot 10^{-10} \right)^2 + \left(4 \cdot 10^{-10} - 0 \right)^2 + \left( 0 - 0 \right)^2} = $$
+$$ = \sqrt{10^{-20} \left( 9 + 16 \right) } = 5 \cdot 10^{-10} \textrm{m} $$
+\\ \\
+Zatem energia elektrostatyczna układu jest równa:
+$$ E_{123} = \frac{k}{2} \Biggl[ 1e \left( \frac{k\cdot 4e }{ 4 \cdot 10^{-10} } + \frac{k\cdot 2e }{ 3 \cdot 10^{-10} } \right) + $$
+$$ + 4e \left( \frac{k \cdot 1e }{ 4 \cdot 10^{-10} } + \frac{k\cdot 2e }{ 5 \cdot 10^{-10} } \right) + 2e \left( \frac{k\cdot 1e }{ 3 \cdot 10^{-10} } + \frac{k\cdot 4e}{ 5 \cdot 10^{-10} } \right) \Biggr] $$ \\ 
+$$ E_{123} = \frac{k}{2} \Biggl[ 1e \left( \frac{3 k\cdot 4e + 4 k\cdot 2e}{ 12 \cdot 10^{-10} } \right) + $$
+$$ + 4e \left( \frac{5k \cdot 1e + 4k\cdot 2e }{ 20 \cdot 10^{-10} } \right) + 2e \left( \frac{5k\cdot 1e + 3k\cdot 4e}{ 15 \cdot 10^{-10} } \right) \Biggr] $$ \\ 
+\newpage
+$$ E_{123} = \frac{k}{2} \left[ 1e \left( \frac{12ke + 8ke}{ 12 \cdot 10^{-10} } \right) + 4e \left( \frac{5ke + 8ke}{ 20 \cdot 10^{-10} } \right) + 2e \left( \frac{5ke + 12ke}{ 15 \cdot 10^{-10} } \right) \right] $$ \\ 
+$$ E_{123} = \frac{k}{2} \left( \frac{20ke^2}{ 12 \cdot 10^{-10} } + \frac{52ke^2}{ 20 \cdot 10^{-10} }  + \frac{34ke^2}{ 15 \cdot 10^{-10} } \right) $$ \\ 
+$$ E_{123} = k^2e^2 \left( \frac{10}{12} + \frac{26}{20}  + \frac{17}{15} \right) \frac{1}{10^{-10}} $$ \\ 
+$$ E_{123} = \frac{49}{15 \cdot 10^{-10}} k^2e^2 = 3.2(6) \cdot 10^{10} \cdot k^2e^2 $$
+
+
+
+
+\newpage
+\paragraph{Zadanie 6.}
+Układ trzech kondensatorów o pojemnościach $C_1 = 1 \mu$F, $C_2 = 2 \mu$F i $C_3 = 3 \mu$F został podłaczony do stałego napięcia $U = 1$V. \\ Znaleźć ładunek, napiecie i energię
+elektrostatyczną dla każdego z kondensatorów oraz pojemność zastępczą układu.
+
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (0, -3)
+	  to (0, 0)
+      to (3, 0)
+      to (3, 1)
+      to [C=$C_1$] (5, 1)
+      to (5, 0)
+      to (7, 0);
+
+\draw (3, 0)
+	  to (3, -1)
+	  to [C=$C_2$] (5, -1)
+	  to (5, 0);
+
+\draw (7, 0)
+	  to [C=$C_3$] (9, 0)
+	  to (10, 0)
+	  to (10, -3);
+
+\draw (4.75, -3)
+	  to [short,o-] (0, -3);
+
+
+\draw (5.25, -3)
+	  to [short,o-] (10, -3);
+
+\draw
+	  (5, -3) node [anchor=north] {$U$};
+
+\end{circuitikz}
+\end{center}
+
+$U_{1+2}$ - napięcie na połączonych szeregowo kondensatorach $1$ i $2$. \\
+
+$U_1$ - napięcie na kondensatorze $1$. \\
+
+$U_2$ - napięcie na kondensatorze $2$. \\
+
+$U_3$ - napięcie na kondensatorze $3$. \\
+
+$C_{Z12}$ - pojemność zastępcza za kondensatory $1$ i $2$. \\ 
+
+$C_{Z123}$ - pojemność zastępcza za wszystkie kondensatory. \\
+
+$Q_C$ - ładunek całkowity. \\
+
+$Q_{1+2}$ - ładunek na połączonych szeregowo kondensatorach $1$ i $2$. \\
+
+$Q_1$ - ładunek kondensatora $1$. \\
+
+$Q_2$ - ładunek kondensatora $2$. \\
+
+$Q_3$ - ładunek kondensatora $3$. \\
+
+\newpage
+$$ U = U_{1+2} + U_3 = 1 \wolt $$ 
+$$ C_{Z12} = C_1 + C_2 = 3 \mu\farrad $$ 
+$$ \frac{1}{C_{Z123}} = \frac{1}{C_3} + \frac{1}{C_{Z12}} $$ \\ 
+$$ C_{Z123} = \frac{C_3C_{Z12}}{C_3 + C_{Z12}} = \frac{3 \cdot 3}{3 + 3} = \frac{9}{6} = 1,5 \mu\farrad $$ \\ 
+Łączenie szeregowe:
+$$ Q_C = C_{Z123} \cdot U = 1,5 \mu\kulomb $$
+$$ Q_{1+2} = Q_3 = Q_C = 1,5 \mu\kulomb $$ \\
+$$ C_3 = \frac{Q_3}{U_3} \Rightarrow U_3 = \frac{Q_3}{C_3} = \frac{1,5 \mu\kulomb}{3 \mu\farrad} = 0,5 \wolt $$ \\
+$$ U_{1+2} = \frac{Q_3}{C_3} = U - U_3 = 0,5 \wolt $$ \\
+Łączenie równoległe:
+$$ Q_{1+2} = Q_1 + Q_2 $$
+$$ U_1 = U_2 = U_{1+2} = 0,5 \wolt$$ \\
+$$ Q_1 = U_1 \cdot C_1 = 0,5 \wolt \cdot 1 \mu\farrad = 0,5 \mu\kulomb $$
+$$ Q_2 = U_2 \cdot C_2 = 0,5 \wolt \cdot 2 \mu\farrad = 1 \mu\kulomb $$ \\
+Obliczmy energię każdego z kondensatorów:
+$$ E_1 = \frac{C_1 \cdot U_1^2}{2} = \frac{1 \mu\farrad \cdot \left(0,5 \wolt \right)^2}{2} = 0,125 \mu \textrm{J} $$ 
+$$ E_2 = \frac{C_2 \cdot U_2^2}{2} = \frac{2 \mu\farrad \cdot \left(0,5 \wolt \right)^2}{2} = 0,25 \mu \textrm{J} $$ 
+$$ E_3 = \frac{C_3 \cdot U_3^2}{2} = \frac{3 \mu\farrad \cdot \left(0,5 \wolt \right)^2}{2} = 0,375 \mu \textrm{J} $$ 
+
+
+
+\end{document}
