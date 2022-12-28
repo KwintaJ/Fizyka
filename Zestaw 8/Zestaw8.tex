@@ -1,0 +1,99 @@
+\documentclass[14pt, table]{extarticle}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={7in, 10.5in}]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tgbonum}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage[T1]{fontenc}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{arrows}
+
+\newcommand{\metr}{\textrm{m}}
+\newcommand{\sekunda}{\textrm{s}}
+\newcommand{\gram}{\textrm{g}}
+\newcommand{\farrad}{\textrm{F}}
+\newcommand{\wolt}{\textrm{V}}
+\newcommand{\kulomb}{\textrm{C}}
+\newcommand{\ohm}{\Omega}
+\newcommand{\tesla}{\textrm{T}}
+
+
+\title{Fizyka \\ \Large{Zestaw 8}}
+\author{Jan Kwinta}
+\date{2023-01-03}
+
+\begin{document}
+\maketitle
+
+\paragraph{Zadanie 1.}
+Jaka siła Lorentza działa na proton, który z predkością $\vec{v} = (v_0, 0, 0)$ wpada w pole magnetyczne o indukcji $\vec{B} = (0, B_0, 0)$ ? Ładunek protonu wynosi $e = 1.6 \cdot 10^{-19} \kulomb, B_0 = 2 \tesla$ i $v_0 = 108 \frac{\metr}{\sekunda}$.
+
+
+\newpage
+\paragraph{Zadanie 2.}
+Udowodnić, że energia kinetyczna naładowanej czastki poruszającej się w polu magnetycznym jest stała w czasie.
+
+
+\newpage
+\paragraph{Zadanie 3.}
+Udowodnić, że całkowita siła działajaca na zamknięty obwód z prądem w jednorodnym polu magnetycznym wynosi zero. Obwód ma dowolny kształt i nie musi zawierać się w jednej płaszczyźnie. 
+
+
+\newpage
+\paragraph{Zadanie 5.}
+W nieskończenie długim walcu o promieniu $R$ płynie prad o stałej gęstści $J$. Korzystajac z prawa Ampère’a znaleźć indukcję magnetyczną $\vec{B}$ w odległości $r$ od osi walca w dwóch przypadkach: \\ \\
+(a) $r \leq R$ \\ \\
+(b) $r > R$
+
+
+\newpage
+\paragraph{Zadanie 7.}
+Kwadratową ramkę o boku $a$ i całkowitym oporze $R$ umieszczono w odległości $s$ od
+nieskończonego przewodnika liniowego, w którym płynie prąd $I(t)$
+
+\begin{equation*}
+I(t) = \left\{
+        \begin{array}{ll}
+            (1 - \alpha t) I_0 \quad &\text{,} \, \ 1 \leq t \leq \frac{1}{\alpha} \\
+            \\
+            0 \quad &\text{,} \, \ t > \frac{1}{\alpha}
+        \end{array}
+    \right.
+\end{equation*} \\
+gdzie $\alpha$ i $I_0$ to dodatnie stałe. Ramka i przewodnik leżą w jednej płaszczyźnie, a bok ramki jest równoległy do przewodnika. Jaka bedzie wartość natężenia i kierunek prądu indukowanego w ramce prądu $I_i(t)$ ?
+
+
+
+\newpage
+\paragraph{Zadanie 8.}
+Dany jest tzw. szeregowy obwód RLC. Znaleźć równanie różniczkowe opisujace napiecie na kondensatorze $V(t)$ i jego zwiazek z natężeniem prądu $I$ płynacego w obwodzie. W ogólnym przypadku w obwód można wpiać źródło zewnętrznej siły elektromotorycznej zmiennej w czasie $\epsilon(t)$. Co stanowi mechaniczny odpowiednik
+takiego obwodu? Dlaczego zwykle rozważania ograniczaja się do siły elektromotorycznej postaci $\epsilon(t) = \epsilon_0 \cos(\omega t)$ lub $\epsilon(t) = \epsilon_0 \sin(\omega t)$, gdzie $\epsilon_0$ i $\omega$ to stałe?
+
+\begin{center}
+\begin{circuitikz}
+
+\draw (0, 0)
+	  to [cute inductor] (3, 0)
+	  to [R=$R$] (6, 0)
+	  to [C=$C$] (9, 0)
+	  to (9, -1.5)
+	  to (4, -1.5);
+
+\draw (0, -1.5) [short,-o] to (2.75, -1.5);
+	  
+\draw (0, -1.5) to (0, 0);
+
+\draw (4, -1.5) [short,-o] to (3.25, -1.5);
+
+\draw
+	  (1.5, 0.3) node [anchor=south] {$L$}
+	  (3, -1.5) node [anchor=north] {$\epsilon$};
+
+\end{circuitikz}
+\end{center}
+
+
+\end{document}
